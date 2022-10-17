@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "AddSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-header border-8">
+    <h3 class="mb-0">Yetenek Ekleme Sayfası</h3>
+</div>
+<form class="form-group" method="post">
+    <br />
+    @Html.Label("Yetenek Başlığı")
+    <input type="text" name="ExperienceName" class="form-control" />
+    <br />
+    <label>Çalışılan Şirketin Adı</label>
+    <input type="text" name="WorkPlaceName" class="form-control" />
+    <br />
+    <label>Tarih</label>
+    <input type="text" name="Date" class="form-control" />
+    <br />
+    <label>Görsel</label>
+    <button type="submit"> Resim ekle</button>
+    <br />
+    <label>Açıklama</label>
+    <input type="text" name="Description" class="form-control" />
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+
+</form>
