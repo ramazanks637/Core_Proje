@@ -9,7 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class Experience
     {
-        [Key] 
+        [Key]
         public int ExperienceId { get; set; }
         public string ExperienceName { get; set; }
         public string WorkPlaceName { get; set; }
