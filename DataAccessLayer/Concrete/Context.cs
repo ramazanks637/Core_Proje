@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=RAMAZANPC;Database=CoreProjeDB;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=RAMAZANKOSE;Database=CoreProjeDB;Trusted_Connection=true");
         }
 
         public DbSet<About> Abouts { get; set; }
