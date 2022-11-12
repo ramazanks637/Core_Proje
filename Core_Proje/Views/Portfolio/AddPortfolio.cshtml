@@ -1,8 +1,55 @@
-﻿
+﻿@model EntityLayer.Concrete.Portfolio
 @{
     ViewData["Title"] = "AddPortfolio";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<h1>AddPortfolio</h1>
+<div class="card-header border-8">
+    <h3 class="mb-0">Proje Ekleme Sayfası</h3>
+</div>
 
+@using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Proje Başlığı")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Name)
+    <br />
+    <label>Image Url</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ImageUrl)
+    <br />
+    <label>Project Url</label>
+    @Html.TextBoxFor(x => x.ProjectUrl, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ProjectUrl)
+    <br />
+    <label>Proje güçük resmi</label>
+    @Html.TextBoxFor(x => x.SmallImageUrl, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.SmallImageUrl)
+    <br />
+    <label>Proje kısa Linki</label>
+    @Html.TextBoxFor(x => x.ProjectShortLink, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ProjectShortLink)
+    <br />
+    <label>Platform</label>
+    @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Platform)
+    <br />
+    <label>Price</label>
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Price)
+    <br />
+    <label>Status</label>
+    @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Status)
+    <br />
+    <label>Value</label>
+    @Html.TextBoxFor(x => x.Value, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Value)
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+}
+
+
+<!-- plugins:js -->
+<script src="~/corona-template/template/assets/vendors/js/vendor.bundle.base.js"></script>

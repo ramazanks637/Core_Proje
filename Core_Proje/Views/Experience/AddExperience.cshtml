@@ -1,33 +1,41 @@
-﻿
+﻿@model EntityLayer.Concrete.Experience
+
 @{
     ViewData["Title"] = "AddExperience";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-8">
-    <h3 class="mb-0">Deneyim Ekleme Sayfası</h3>
+@using (Html.BeginForm("AddExperience", "Experience", FormMethod.Post))
+{
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">Yeni Deneyim Ekleme Paneli</p>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label>WorkPlace Name</label>
+                    <input type="text" class="form-control" name="WorkPlaceName" placeholder="WorkPlace Name">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="text" class="form-control" name="Date" placeholder="Date">
+                </div>
+                <div class="form-group">
+                    <label>Image Url</label>
+                    <input type="text" class="form-control" name="ImageUrl" placeholder="Image Url">
+                </div>
+                <div class="form-group">
+                    <label>Experience Name</label>
+                    <input type="text" class="form-control" name="ExperienceName" placeholder="Experience Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Description</label>
+                    <textarea class="form-control" name="Description" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <button class="btn btn-dark">İptal</button>
+            </form>
+        </div>
+    </div>
 </div>
-<form class="form-group" method="post">
-    <br />
-    @Html.Label("Deneyim Adı")
-    <input type="text" name="ExperienceName" class="form-control" />
-    <br />
-    <label>Çalışan Şirket Adı</label>
-    <input type="text" name="WorkPlaceName" class="form-control" />
-    <br />
-    <label>Tarih</label>
-    <input type="text" name="Date" class="form-control" />
-    <br />
-    <label>Görsel</label>
-    <input type="file" name="ImageUrl" class="form-control" />
-    <br />
-    <label>Açıklama</label>
-    <input type="text" name="Description" class="form-control" />
-    <br />
-
-    <button class="btn btn-primary">Kaydet</button>
-
-
-
-</form>
-
+}

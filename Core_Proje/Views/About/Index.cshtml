@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.About
+
+@{
+    ViewData["Title"] = "UpdateSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card-header border-8">
+    <h3 class="mb-0">About Güncelleme Sayfası</h3>
+</div>
+@using (Html.BeginForm("Index", "About", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.AboutId)
+    <br />
+    <label>Kendini Tanıtma Cümlesi</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Biyografi</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <label>Yaş</label>
+    @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+    <br />
+    <label>Mail Adresi</label>
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    <label>Telefon</label>
+    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+    <br />
+    <label>Adress</label>
+    @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+    <br />
+    <label>Resim Yolu</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-success" onclick="return confirm('Bilgileriniz Güncellendi');">Güncelle</button>
+
+}

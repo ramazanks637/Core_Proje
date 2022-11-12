@@ -2,7 +2,7 @@
 @model List<Portfolio>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 <div class="row">
@@ -21,7 +21,8 @@
                             <th scope="col" class="sort" data-sort="status">Durum</th>
                             <th scope="col">Görseller</th>
                             <th scope="col" class="sort" data-sort="completion">Tamamlanma Oranı</th>
-                            <th scope="col"></th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Düzenle</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -74,28 +75,24 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                <td>
+                                    <a class="btn btn-outline-danger" href="/Portfolio/DeletePortfolio/@item.PortfolioId" id="DeleteBtn"
+                                       onclick="return confirm('Silmek istediğinize emin misiniz?');"><i></i> Sil</a>
+                                </td>
+                                <td>
+                                    <a href="/Portfolio/UpdatePortfolio/@item.PortfolioId" class="btn btn-outline-warning">Düzenle</a>
                                 </td>
                             </tr>
                         }
-
-
-
                     </tbody>
                 </table>
-                <a href="/Portfolio/AddPortfolio/" class="btn btn-info">Yeni Proje Girişi</a>
             </div>
         </div>
     </div>
 </div>
 
+<a href="/Portfolio/AddPortfolio/" class="btn btn-primary">Yeni Proje Girişi</a>
+
+
+<!-- plugins:js -->
+<script src="~/corona-template/template/assets/vendors/js/vendor.bundle.base.js"></script>

@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model List<Portfolio>
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Proje Listesi</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Proje Görseli</th>
+                                <th> Proje Adı</th>
+                                <th> Proje Url </th>
+                                <th> Fiyat </th>
+                                <th> Tamamlanma Oranı </th>
+                                <th> Durum </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@item.PortfolioId</td>
+                                <td><img src="@item.ImageUrl" alt="image" /></td>
+                                <td> @item.Name </td>
+                                <td> <a href="@item.ProjectUrl" target="_blank" rel="noopener noreferrer"> Proje'ye Gitmek için Tıklayın</a> </td>
+                                <td> @item.Price </td>
+                                <td>% @item.Value</td>
+                                @if (item.Value == 100)
+                                {
+                                    <td>
+                                        <div class="badge badge-outline-success">Proje Tamamlandı</div>
+                                    </td>
+                                }
+                                else if (item.Value < 100 && item.Value >= 60)
+                                {
+                                    <td>
+                                        <div class="badge badge-outline-primary">Yarısından Çoğu Bitti</div>
+                                    </td>
+                                }
+                                else if (item.Value < 60 && item.Value >= 50)
+                                {
+                                    <td>
+                                        <div class="badge badge-outline-danger">Yarısı Bitti</div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <div class="badge badge-outline-secondary">Yeni Başlandı Sayılır</div>
+                                    </td>
+                                }
+
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

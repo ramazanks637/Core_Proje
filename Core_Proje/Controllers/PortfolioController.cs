@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,9 @@ namespace Core_Proje.Controllers
         PortfolioManager portfolioManager = new PortfolioManager(new EfPortfolioDal());
         public IActionResult Index()
         {
-            ViewBag.v1 = "Proje Listesi";
-            ViewBag.v2 = "Projelerim";
-            ViewBag.v3 = "Proje Lİstesi";
+            ViewBag.PageName = "Project List";
+            ViewBag.Url = "Portfolio";
+            ViewBag.Description = "Project List";
             var values = portfolioManager.GetList();
             return View(values);
         }
@@ -24,14 +26,70 @@ namespace Core_Proje.Controllers
         [HttpGet]
         public IActionResult AddPortfolio()
         {
+            ViewBag.PageName = "Add Project";
+            ViewBag.Url = "Portfolio";
+            ViewBag.Description = "Adding";
             return View();
         }
         [HttpPost]
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
-            portfolioManager.Add(portfolio);
+
+            PortfolioValidator validations = new PortfolioValidator();
+            ValidationResult results = validations.Validate(portfolio);
+            if (results.IsValid)
+            {
+                portfolioManager.Add(portfolio);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+
+        }
+
+        public IActionResult DeletePortfolio(int id)
+        {
+            var values = portfolioManager.GetById(id);
+            portfolioManager.Delete(values);
             return RedirectToAction("Index");
         }
 
+
+        [HttpGet]
+        public IActionResult UpdatePortfolio(int id)
+        {
+            ViewBag.PageName = "Portfolio Update";
+            ViewBag.Url = "Portfolio";
+            ViewBag.Description = "Update";
+            var values = portfolioManager.GetById(id);
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult UpdatePortfolio(Portfolio portfolio)
+        {
+            PortfolioValidator validations = new PortfolioValidator();
+            ValidationResult results = validations.Validate(portfolio);
+
+            if (results.IsValid)
+            {
+                portfolioManager.Update(portfolio);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors )
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+
+            return View();
+        }
     }
 }

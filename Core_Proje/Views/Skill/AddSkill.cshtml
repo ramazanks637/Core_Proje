@@ -1,30 +1,28 @@
 ﻿
 @{
     ViewData["Title"] = "AddSkill";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-8">
-    <h3 class="mb-0">Yetenek Ekleme Sayfası</h3>
-</div>
-<form class="form-group" method="post">
-    <br />
-    @Html.Label("Yetenek Başlığı")
-    <input type="text" name="ExperienceName" class="form-control" />
-    <br />
-    <label>Çalışılan Şirketin Adı</label>
-    <input type="text" name="WorkPlaceName" class="form-control" />
-    <br />
-    <label>Tarih</label>
-    <input type="text" name="Date" class="form-control" />
-    <br />
-    <label>Görsel</label>
-    <button type="submit"> Resim ekle</button>
-    <br />
-    <label>Açıklama</label>
-    <input type="text" name="Description" class="form-control" />
-    <br />
-
-    <button class="btn btn-primary">Kaydet</button>
-
-</form>
+@using (Html.BeginForm("AddSkill", "Skill", FormMethod.Post))
+{
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description">Yeni Deneyim Ekleme Paneli</p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>Yetenek</label>
+                        <input type="text" class="form-control" name="Title" placeholder="Yetenek Adı">
+                    </div>
+                    <div class="form-group">
+                        <label>Değer</label>
+                        <input type="text" class="form-control" name="Value" placeholder="Değeri">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <button class="btn btn-dark">İptal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}

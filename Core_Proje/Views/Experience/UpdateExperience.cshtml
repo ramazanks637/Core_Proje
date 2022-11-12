@@ -1,34 +1,46 @@
 ﻿@model EntityLayer.Concrete.Experience
 @{
     ViewData["Title"] = "UpdateExperience";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
-
-<div class="card-header border-8">
-    <h3 class="mb-0">Deneyim Güncelleme Sayfası</h3>
-</div>
-
 
 @using (Html.BeginForm("UpdateExperience", "Experience", FormMethod.Post))
 {
-    @Html.HiddenFor(x => x.ExperienceId)
-    <br />
-    @Html.Label("Deneyim Adı")
-    @Html.TextBoxFor(x => x.ExperienceName, new { @class = "form-control" })
-    <br />
-    <label>Çalışan Şirket Adı</label>
-    @Html.TextBoxFor(x => x.WorkPlaceName, new { @class = "form-control" })
-    <br />
-    <label>Tarih</label>
-    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
-    <br />
-    <label>Görsel</label>
-    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
-    <br />
-    <label>Açıklama</label>
-    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-    <br />
-    <button class="btn btn-success">Güncelle</button>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">Deneyim Güncelleme Paneli</p>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label>Experience İd</label>
+                    @Html.TextBoxFor(x=>x.ExperienceId,new { @class ="form-control"})
+                </div>
+                <div class="form-group">
+                    <label>WorkPlace Name</label>
+                    @Html.TextBoxFor(x => x.WorkPlaceName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Image Url</label>
+                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Experience Name</label>
+                    @Html.TextBoxFor(x => x.ExperienceName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Description</label>
+                    @Html.TextAreaFor(x => x.Description,6,3, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <button class="btn btn-dark">İptal</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 }
 

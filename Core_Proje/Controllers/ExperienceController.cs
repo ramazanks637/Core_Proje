@@ -14,18 +14,18 @@ namespace Core_Proje.Controllers
         ExperienceManager experienceManager = new ExperienceManager(new EfExperienceDal());
         public IActionResult Index()
         {
-            ViewBag.v1 = "Deneyim Listesi";
-            ViewBag.v2 = "Deneyimler";
-            ViewBag.v3 = "Deneyim Lİstesi";
+            ViewBag.PageName = "Experience List";
+            ViewBag.Url = "Experience";
+            ViewBag.Description = "Experience List";
             var values = experienceManager.GetList();
             return View(values);
         }
         [HttpGet]
         public IActionResult AddExperience()
         {
-            ViewBag.v1 = "Deneyim Ekleme";
-            ViewBag.v2 = "Deneyimler";
-            ViewBag.v3 = "Deneyim Ekleme";
+            ViewBag.PageName = "Adding Experience";
+            ViewBag.Url = "Experience";
+            ViewBag.Description = "Adding Experience";
             return View();
         }
         [HttpPost]
@@ -43,9 +43,9 @@ namespace Core_Proje.Controllers
         [HttpGet]
         public IActionResult UpdateExperience(int id)
         {
-            ViewBag.v1 = "Deneyim Günceleme";
-            ViewBag.v2 = "Deneyimler";
-            ViewBag.v3 = "Deneyim Günceleme";
+            ViewBag.PageName = "Experience Update";
+            ViewBag.Url = "Experience";
+            ViewBag.Description = "Experience Update";
             var values = experienceManager.GetById(id);
             return View(values);
         }

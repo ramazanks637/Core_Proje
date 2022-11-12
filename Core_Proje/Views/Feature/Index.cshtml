@@ -1,8 +1,41 @@
-﻿
+﻿@model EntityLayer.Concrete.Feature
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "UpdateExperience";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<h1>Burası Content Alanıdır</h1>
+@using (Html.BeginForm("Index", "Feature", FormMethod.Post))
+{
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description">Öne Çıkan Güncelleme Paneli</p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>Header</label>
+                        @Html.TextBoxFor(x => x.FeatureId, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Header</label>
+                        @Html.TextBoxFor(x => x.Header, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                    </div>
+                    <button class="btn btn-primary mr-2">Kaydet</button>
+                    <button class="btn btn-dark">İptal</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
+}
+
+
+<!-- plugins:js -->
+<script src="~/corona-template/template/assets/vendors/js/vendor.bundle.base.js"></script>
