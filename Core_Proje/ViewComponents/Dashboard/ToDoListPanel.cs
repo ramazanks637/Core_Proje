@@ -14,7 +14,7 @@ namespace Core_Proje.ViewComponents.Dashboard
         public IViewComponentResult Invoke()
         {
             var values = toDoListManager.GetList();
-            return View();
+            return View(values);
         }
     }
 }
